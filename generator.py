@@ -1,3 +1,4 @@
+import re
 import secrets
 import string
 
@@ -16,8 +17,19 @@ def generate_password(length, nums, special_chars, lowercase, uppercase):
         # Generate a password
         for _ in range(length):
             password += secrets.choice(all_characters)
-            constraints = [(nums, "")]
+            constraints = [
+                (nums, "[0123456789]")
+                ]
 
     return password
 
 new_password = generate_password(8)
+
+pattern = re.compile("a")
+quote = "Frank and Ben are my brothers"
+print(pattern.search(quote))
+
+# Alternate code
+# pattern = "r[aos]"
+# quote = "Frank and Ben are my brothers"
+# print(re.findall(pattern, quote))
