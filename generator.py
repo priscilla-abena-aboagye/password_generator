@@ -21,13 +21,11 @@ def generate_password(length, nums, special_chars, lowercase, uppercase):
                 (nums, r"\d"),
                 (lowercase, r"[a-z]"),
                 (uppercase, r"[A-Z]")
-                (special_chars, r"[a-zA-Z0-9]")
+                (special_chars, fr"[{symbols}]")
                 ]   
+            for constraint, pattern in constraints:
+                len(re.findall(pattern, password))
 
     return password
 
 new_password = generate_password(8)
-
-pattern = r"\."
-quote = "I am working on a python password generator"
-print(re.findall(pattern, quote))
