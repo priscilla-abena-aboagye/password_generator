@@ -17,14 +17,14 @@ def generate_password(length, nums, special_chars, lowercase, uppercase):
         # Generate a password
         for _ in range(length):
             password += secrets.choice(all_characters)
-            constraints = [
+        constraints = [
                 (nums, r"\d"),
                 (lowercase, r"[a-z]"),
-                (uppercase, r"[A-Z]")
+                (uppercase, r"[A-Z]"),
                 (special_chars, fr"[{symbols}]")
                 ]   
-            for constraint, pattern in constraints:
-                len(re.findall(pattern, password))
+        for constraint, pattern in constraints:
+            constraint <= len(re.findall(pattern, password))
 
     return password
 
