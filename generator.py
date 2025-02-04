@@ -2,7 +2,7 @@ import re
 import secrets
 import string
 
-def generate_password(length, nums, special_chars, lowercase, uppercase):
+def generate_password(length=16, nums=1, special_chars=1, lowercase=1, uppercase=1):
     # All the characters for the password
     letters = string.ascii_letters
     digits = string.digits
@@ -23,12 +23,13 @@ def generate_password(length, nums, special_chars, lowercase, uppercase):
                 (uppercase, r"[A-Z]"),
                 (special_chars, fr"[{symbols}]")
                 ] 
-        count = 0  
         
-        if all(constraint <= len(re.findall(pattern, password)) for constraint, pattern in constraints):
-            count == 4
+        if all(
+            constraint <= len(re.findall(pattern, password)) for constraint, pattern in constraints
+        ):
             break
 
     return password
 
-new_password = generate_password(8)
+new_password = generate_password(length=8)
+print(f"Generated password:  {new_password}")
