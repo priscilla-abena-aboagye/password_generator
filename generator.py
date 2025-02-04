@@ -31,5 +31,8 @@ def generate_password(length=16, nums=1, special_chars=1, lowercase=1, uppercase
 
     return password
 
-new_password = generate_password(length=8)
-print(f"Generated password:  {new_password}")
+if __name__ == '__main__':
+    new_password = generate_password(length=8)
+    print(f"Generated password:  {new_password}")
+
+
